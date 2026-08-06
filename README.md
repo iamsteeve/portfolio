@@ -6,10 +6,13 @@ Bilingual static site built with [Astro](https://astro.build), deployed to Verce
 
 ## Stack
 
-- **Astro 5** — static output, zero JavaScript by default
+- **Astro 7** — static output, zero JavaScript by default
 - **TypeScript** (strict) for content and the single client script
 - **Fontsource** — self-hosted Newsreader (optical-size axis) and JetBrains Mono
 - **@astrojs/sitemap** — emits `/sitemap-index.xml` covering both locales
+- **Node 24** (Krypton, Active LTS) — pinned in `.nvmrc` and `engines.node`
+
+`package.json` pins `overrides.sharp` to `^0.35.3`. Astro accepts `^0.34.0 || ^0.35.0`, npm settles on 0.34.x, and that line carries unpatched libvips CVEs. The override keeps `npm audit` clean; the site itself never invokes sharp, since no images go through `astro:assets`.
 
 ## Commands
 
