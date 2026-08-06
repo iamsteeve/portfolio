@@ -1,0 +1,30 @@
+---
+import Base from './Base.astro';
+import Header from '../components/Header.astro';
+import Domains from '../components/Domains.astro';
+import Work from '../components/Work.astro';
+import OpenSource from '../components/OpenSource.astro';
+import Experience from '../components/Experience.astro';
+import Stack from '../components/Stack.astro';
+import Contact from '../components/Contact.astro';
+
+import type { Copy } from '../content/types';
+import type { Lang } from '../data/site';
+
+interface Props {
+  lang: Lang;
+  t: Copy;
+}
+
+const { lang, t } = Astro.props;
+---
+
+<Base lang={lang} t={t}>
+  <Header lang={lang} t={t} />
+  <Domains t={t} />
+  <Work t={t} />
+  <OpenSource t={t} />
+  <Experience t={t} />
+  <Stack t={t} />
+  <Contact lang={lang} t={t} />
+</Base>

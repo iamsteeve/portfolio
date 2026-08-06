@@ -1,0 +1,49 @@
+---
+import type { Copy } from '../content/types';
+
+interface Props {
+  t: Copy;
+}
+
+const { t } = Astro.props;
+---
+
+<section class="section" id="experience" aria-labelledby="exp-h">
+  <p class="section__eyebrow" data-reveal>{t.expLabel}</p>
+  <h2 class="section__title section__title--spaced-wide" id="exp-h" data-reveal>{t.expH}</h2>
+
+  <div class="exp-scroll" data-reveal>
+    <table class="exp-table">
+      <thead>
+        <tr>
+          <th scope="col">{t.colPeriod}</th>
+          <th scope="col">{t.colRole}</th>
+          <th scope="col">{t.colDid}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          t.experience.map((job) => (
+            <tr>
+              <td class="exp__period">
+                {job.period}
+                <br />
+                {job.meta}
+              </td>
+              <td class="exp__role">
+                <span class="exp__company">{job.company}</span>
+                {job.roles.map((role) => (
+                  <span class="exp__title">{role}</span>
+                ))}
+              </td>
+              <td class="exp__did">
+                <p class="exp__summary">{job.summary}</p>
+                <p class="exp__stack">{job.stack}</p>
+              </td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+</section>

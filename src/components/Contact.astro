@@ -1,0 +1,27 @@
+---
+import type { Copy } from '../content/types';
+import { CV, LINKS, type Lang } from '../data/site';
+
+interface Props {
+  lang: Lang;
+  t: Copy;
+}
+
+const { lang, t } = Astro.props;
+---
+
+<section class="section section--contact" id="contact" aria-labelledby="contact-h">
+  <p class="section__eyebrow" data-reveal>{t.contactLabel}</p>
+  <h2 class="section__title section__title--narrower" id="contact-h" data-reveal>{t.contactH}</h2>
+  <p class="contact__prose" data-reveal>{t.contactP}</p>
+
+  <a class="contact__email" href={`mailto:${LINKS.email}`} data-reveal>{LINKS.email}</a>
+
+  <div class="contact__links" data-reveal>
+    <a href={LINKS.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+    <a href={LINKS.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+    <a href={CV[lang]} download>{t.cvLink}</a>
+  </div>
+
+  <p class="footer" data-reveal>{t.footer}</p>
+</section>

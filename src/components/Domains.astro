@@ -1,0 +1,27 @@
+---
+import type { Copy } from '../content/types';
+
+interface Props {
+  t: Copy;
+}
+
+const { t } = Astro.props;
+---
+
+<section class="section" id="domains" aria-labelledby="dom-h">
+  <p class="section__eyebrow" data-reveal>{t.domainsLabel}</p>
+  <h2 class="section__title section__title--narrow section__title--spaced" id="dom-h" data-reveal>
+    {t.domainsH}
+  </h2>
+
+  <dl class="domains" data-reveal>
+    {
+      t.domains.map((domain) => (
+        <div class="domains__row">
+          <dt class="domains__term">{domain.k}</dt>
+          <dd class="domains__def">{domain.v}</dd>
+        </div>
+      ))
+    }
+  </dl>
+</section>

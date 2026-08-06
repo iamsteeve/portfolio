@@ -1,0 +1,75 @@
+---
+import type { Copy } from '../content/types';
+
+interface Props {
+  t: Copy;
+}
+
+const { t } = Astro.props;
+---
+
+<section class="section" id="work" aria-labelledby="work-h">
+  <p class="section__eyebrow" data-reveal>{t.workLabel}</p>
+  <h2 class="section__title section__title--narrow" id="work-h" data-reveal>{t.workH}</h2>
+
+  <article class="piece" data-reveal>
+    <p class="piece__year">{t.searchYear}</p>
+    <div class="piece__head">
+      <h3 class="piece__title">{t.searchTitle}</h3>
+      <p class="piece__kind">{t.searchKind}</p>
+    </div>
+
+    <p class="piece__prose piece__prose--lead">{t.searchP1}</p>
+    <p class="piece__prose">{t.searchP2}</p>
+    <p class="piece__prose">{t.searchP3}</p>
+
+    <div class="latency">
+      <p class="latency__label">{t.barLabel}</p>
+      <div class="latency__rows">
+        {
+          t.latency.map((row) => (
+            <div class="latency__row">
+              <span class="latency__value" style={`--row-color:${row.color}`}>
+                {row.label}
+              </span>
+              <span
+                class="latency__bar"
+                aria-hidden="true"
+                style={`--row-color:${row.color};--row-width:${row.width};--row-opacity:${row.opacity}`}
+              />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </article>
+
+  <article class="piece piece--divided" data-reveal>
+    <div class="piece__head piece__head--flush">
+      <h3 class="piece__title">{t.feTitle}</h3>
+      <p class="piece__kind">{t.feKind}</p>
+    </div>
+
+    <dl class="frontend">
+      {
+        t.frontend.map((piece) => (
+          <div class="frontend__row">
+            <p class="frontend__year">{piece.year}</p>
+            <dt class="frontend__term">
+              <span class="frontend__name">{piece.name}</span>
+              <span class="frontend__stack">{piece.stack}</span>
+            </dt>
+            <dd class="frontend__body">{piece.body}</dd>
+            <dd class="frontend__links">
+              {piece.links.map((link) => (
+                <a class="link-out" href={link.href} target="_blank" rel="noopener noreferrer">
+                  {link.label} ↗
+                </a>
+              ))}
+            </dd>
+          </div>
+        ))
+      }
+    </dl>
+  </article>
+</section>

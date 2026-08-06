@@ -1,0 +1,38 @@
+---
+import type { Copy } from '../content/types';
+import { CV, type Lang } from '../data/site';
+
+interface Props {
+  lang: Lang;
+  t: Copy;
+}
+
+const { lang, t } = Astro.props;
+---
+
+<header class="header">
+  <p class="header__availability" data-reveal>{t.availability}</p>
+  <h1 class="header__h1" data-reveal>
+    {t.h1a} <span class="header__h1-second">{t.h1b}</span>
+  </h1>
+
+  <p class="header__bio" data-reveal>{t.bio1}</p>
+  <p class="header__bio" data-reveal>{t.bio2}</p>
+  <p class="header__bio" data-reveal>{t.bio3}</p>
+
+  <dl class="facts" data-reveal>
+    {
+      t.facts.map((fact) => (
+        <>
+          <dt class="facts__term">{fact.k}</dt>
+          <dd class="facts__value">{fact.v}</dd>
+        </>
+      ))
+    }
+  </dl>
+
+  <div class="ctas" data-reveal>
+    <a class="cta cta--primary" href="#work">{t.ctaWork}</a>
+    <a class="cta cta--secondary" href={CV[lang]} download>{t.ctaCV}</a>
+  </div>
+</header>

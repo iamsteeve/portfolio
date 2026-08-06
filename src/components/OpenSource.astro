@@ -1,0 +1,56 @@
+---
+import type { Copy } from '../content/types';
+
+interface Props {
+  t: Copy;
+}
+
+const { t } = Astro.props;
+---
+
+<section class="section" id="open-source" aria-labelledby="os-h">
+  <p class="section__eyebrow" data-reveal>{t.osLabel}</p>
+  <h2 class="section__title section__title--narrow" id="os-h" data-reveal>{t.osH}</h2>
+  <p class="section__intro" data-reveal>{t.osIntro}</p>
+
+  <article class="piece piece--ferry" data-reveal>
+    <p class="piece__year">{t.ferryYear}</p>
+    <div class="piece__head">
+      <h3 class="piece__title">Ferry</h3>
+      <p class="piece__kind">{t.ferryKind}</p>
+    </div>
+
+    <p class="piece__prose piece__prose--lead">{t.ferryP1}</p>
+    <p class="piece__prose">{t.ferryP2}</p>
+    <p class="piece__prose">{t.ferryP3}</p>
+
+    <figure class="code">
+      <figcaption class="code__caption">
+        <span>{t.ferryCodeLabel}</span>
+        <span>elixir</span>
+      </figcaption>
+      <pre class="code__pre">{t.ferryCode}</pre>
+    </figure>
+
+    <dl class="features">
+      {
+        t.ferryFeatures.map((feature) => (
+          <>
+            <dt class="features__key">{feature.k}</dt>
+            <dd class="features__value">{feature.v}</dd>
+          </>
+        ))
+      }
+    </dl>
+
+    <div class="ferry-links">
+      {
+        t.ferryLinks.map((link) => (
+          <a href={link.href} target="_blank" rel="noopener noreferrer">
+            {link.label} ↗
+          </a>
+        ))
+      }
+    </div>
+  </article>
+</section>

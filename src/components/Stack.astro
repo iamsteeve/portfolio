@@ -1,0 +1,25 @@
+---
+import type { Copy } from '../content/types';
+
+interface Props {
+  t: Copy;
+}
+
+const { t } = Astro.props;
+---
+
+<section class="section" id="skills" aria-labelledby="skills-h">
+  <p class="section__eyebrow" data-reveal>{t.stackLabel}</p>
+  <h2 class="section__title section__title--spaced" id="skills-h" data-reveal>{t.stackH}</h2>
+
+  <dl class="skills" data-reveal>
+    {
+      t.skills.map((group) => (
+        <div class="skills__row">
+          <dt class="skills__label">{group.label}</dt>
+          <dd class="skills__items">{group.items}</dd>
+        </div>
+      ))
+    }
+  </dl>
+</section>
